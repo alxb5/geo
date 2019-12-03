@@ -8,8 +8,6 @@ php:
   - 7.3
 
 env:
-  - ENGINE=PDO_MYSQL56
-  - ENGINE=PDO_MYSQL57
   - ENGINE=PDO_MYSQL_MARIADB55
   - ENGINE=PDO_MYSQL_MARIADB10
   - ENGINE=PDO_PGSQL
@@ -21,6 +19,29 @@ env:
 
 matrix:
   include:
+    - dist: trusty
+      env: ENGINE=PDO_MYSQL56
+      php: 7.1
+    - dist: trusty
+      env: ENGINE=PDO_MYSQL56
+      php: 7.2
+    - dist: trusty
+      env: ENGINE=PDO_MYSQL56
+      php: 7.3
+
+    - dist: xenial
+      env: ENGINE=PDO_MYSQL57
+      php: 7.1
+    - dist: xenial
+      env: ENGINE=PDO_MYSQL57
+      php: 7.2
+    - dist: xenial
+      env: ENGINE=PDO_MYSQL57
+      php: 7.3
+    - dist: xenial
+      env: ENGINE=PDO_MYSQL57
+      php: 7.4
+
     - dist: xenial
       env: ENGINE=PDO_MYSQL80
       php: 7.1
@@ -30,10 +51,17 @@ matrix:
     - dist: xenial
       env: ENGINE=PDO_MYSQL80
       php: 7.3
+    - dist: xenial
+      env: ENGINE=PDO_MYSQL80
+      php: 7.4
+
+    - dist: xenial
+      env: ENGINE=SQLite3
+      php: 7.4
 
 before_script:
   - if [[ $ENGINE = PDO_MYSQL56 ]]; then ENGINE=PDO_MYSQL; fi;
-  - if [[ $ENGINE = PDO_MYSQL57 ]]; then ENGINE=PDO_MYSQL; sudo bash travis/install-mysql-5.7.sh; fi;
+  - if [[ $ENGINE = PDO_MYSQL57 ]]; then ENGINE=PDO_MYSQL; sudo apt-get install mysql-server; sudo systemctl start mysql; fi;
   - if [[ $ENGINE = PDO_MYSQL80 ]]; then ENGINE=PDO_MYSQL; sudo bash travis/install-mysql-8.0.sh; fi;
   - if [[ $ENGINE = PDO_MYSQL_MARIADB55 ]]; then ENGINE=PDO_MYSQL; sudo VERSION=5.5 bash travis/install-mariadb.sh; fi;
   - if [[ $ENGINE = PDO_MYSQL_MARIADB10 ]]; then ENGINE=PDO_MYSQL; sudo VERSION=10.0 bash travis/install-mariadb.sh; fi;
