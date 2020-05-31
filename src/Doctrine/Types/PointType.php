@@ -16,7 +16,7 @@ class PointType extends GeometryType
      */
     public function getName()
     {
-        return 'Point';
+        return 'point';
     }
 
     /**

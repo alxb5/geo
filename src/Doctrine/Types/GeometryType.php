@@ -44,7 +44,7 @@ class GeometryType extends Type
      */
     public function getName()
     {
-        return 'Geometry';
+        return 'geometry';
     }
 
     /**
@@ -100,7 +100,7 @@ class GeometryType extends Type
      */
     public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform)
     {
-        return sprintf('ST_GeomFromWKB(%s, %d)', $sqlExpr, self::$srid);
+        return sprintf('ST_GeomFromWKB(CAST(%s as BINARY), %d)', $sqlExpr, self::$srid);
     }
 
     /**

@@ -16,7 +16,7 @@ class GeometryCollectionType extends GeometryType
      */
     public function getName()
     {
-        return 'GeometryCollection';
+        return 'geometrycollection';
     }
 
     /**

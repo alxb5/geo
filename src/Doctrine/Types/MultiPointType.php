@@ -16,7 +16,7 @@ class MultiPointType extends GeometryType
      */
     public function getName()
     {
-        return 'MultiPoint';
+        return 'multipoint';
     }
 
     /**

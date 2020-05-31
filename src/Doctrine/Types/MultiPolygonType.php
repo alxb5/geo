@@ -16,7 +16,7 @@ class MultiPolygonType extends GeometryType
      */
     public function getName()
     {
-        return 'MultiPolygon';
+        return 'multipolygon';
     }
 
     /**

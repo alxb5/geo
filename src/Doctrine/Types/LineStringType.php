@@ -16,7 +16,7 @@ class LineStringType extends GeometryType
      */
     public function getName()
     {
-        return 'LineString';
+        return 'linestring';
     }
 
     /**
